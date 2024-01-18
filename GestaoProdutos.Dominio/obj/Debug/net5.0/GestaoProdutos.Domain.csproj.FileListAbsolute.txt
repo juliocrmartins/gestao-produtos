@@ -1,0 +1,12 @@
+C:\Projetos\gestao-produtos\GestaoProdutos.Domain\bin\Debug\net5.0\GestaoProdutos.Domain.deps.json
+C:\Projetos\gestao-produtos\GestaoProdutos.Domain\bin\Debug\net5.0\GestaoProdutos.Domain.dll
+C:\Projetos\gestao-produtos\GestaoProdutos.Domain\bin\Debug\net5.0\GestaoProdutos.Domain.pdb
+C:\Projetos\gestao-produtos\GestaoProdutos.Domain\obj\Debug\net5.0\GestaoProdutos.Domain.csproj.AssemblyReference.cache
+C:\Projetos\gestao-produtos\GestaoProdutos.Domain\obj\Debug\net5.0\GestaoProdutos.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projetos\gestao-produtos\GestaoProdutos.Domain\obj\Debug\net5.0\GestaoProdutos.Domain.AssemblyInfoInputs.cache
+C:\Projetos\gestao-produtos\GestaoProdutos.Domain\obj\Debug\net5.0\GestaoProdutos.Domain.AssemblyInfo.cs
+C:\Projetos\gestao-produtos\GestaoProdutos.Domain\obj\Debug\net5.0\GestaoProdutos.Domain.csproj.CoreCompileInputs.cache
+C:\Projetos\gestao-produtos\GestaoProdutos.Domain\obj\Debug\net5.0\GestaoProdutos.Domain.dll
+C:\Projetos\gestao-produtos\GestaoProdutos.Domain\obj\Debug\net5.0\refint\GestaoProdutos.Domain.dll
+C:\Projetos\gestao-produtos\GestaoProdutos.Domain\obj\Debug\net5.0\GestaoProdutos.Domain.pdb
+C:\Projetos\gestao-produtos\GestaoProdutos.Domain\obj\Debug\net5.0\ref\GestaoProdutos.Domain.dll
