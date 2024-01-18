@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using GestaoProdutos.Dominio.Interfaces;
+using GestaoProdutos.Dominio.Modelos;
 using GestaoProdutos.Dominio.Modelos.DTO;
 using GestaoProdutos.Dominio.Modelos.Entidades;
 using GestaoProdutos.Dominio.Modelos.Enums;
@@ -11,12 +12,16 @@ namespace GestaoProdutos.Dominio.Servicos
 {
     public class ProdutoServico
     {
-        private readonly IRepositorio<Produto> _produtoRepositorio;
+        private readonly IProdutoRepositorio _produtoRepositorio;
+        private readonly IFornecedorRepositorio _fornecedorRepositorio;
         private readonly IMapper _mapper;
 
-        public ProdutoServico(IRepositorio<Produto> produtoRepositorio, IMapper mapper)
+        public ProdutoServico(IProdutoRepositorio produtoRepositorio, 
+            IFornecedorRepositorio fornecedorRepositorio, 
+            IMapper mapper)
         {
             _produtoRepositorio = produtoRepositorio;
+            _fornecedorRepositorio = fornecedorRepositorio;
             _mapper = mapper;
         }
 
@@ -29,15 +34,40 @@ namespace GestaoProdutos.Dominio.Servicos
             return produtoDTO;
         }
 
-        public IEnumerable<ProdutoDto> ListarPorFiltro(FiltraProdutoRequisicao requisicao)
+        public ListaPaginadaResposta<ProdutoDto> ListarPorFiltro(FiltraProdutoRequisicao requisicao)
         {
+            var registros = new List<ProdutoDto>();
 
+            var resultado = _produtoRepositorio.ListarPorFiltro(new ProdutoFiltro
+            {
+                FornecedorId = requisicao.FornecedorId,
+                Situacao = requisicao.Situacao,
+                TextoBusca = requisicao.TextoBusca,
+                ItemsPorPagina = requisicao.ItemsPorPagina,
+                Pagina = requisicao.Pagina
+            });
+
+            foreach (var produto in resultado.Registros)
+                registros.Add(_mapper.Map<ProdutoDto>(produto));
+
+            return new ListaPaginadaResposta<ProdutoDto>
+            {
+                Registros = registros,
+                ItemsPorPagina = resultado.ItemsPorPagina,
+                Pagina = resultado.Pagina,
+                TotalRegistros = resultado.TotalRegistros
+            };
         }
 
         public InsereProdutoResposta Inserir(InsereProdutoRequisicao requisicao)
         {
             if (requisicao?.DataValidade <= requisicao?.DataFabricacao)
                 return new InsereProdutoResposta { Sucesso = false, MensagemErro = "A data de validade não pode ser menor ou igual a data de fabricação" };
+
+            var fornecedorExiste = _fornecedorRepositorio.ObterPorId(requisicao?.FornecedorId ?? 0) != null;
+
+            if (!fornecedorExiste)
+                return new InsereProdutoResposta { Sucesso = false, MensagemErro = "O fornecedor não existe" };
 
             var produto = new Produto
             {
@@ -62,6 +92,11 @@ namespace GestaoProdutos.Dominio.Servicos
 
             if (produto is null)
                 return new AtualizaProdutoResposta { Sucesso = false, MensagemErro = "O produto não existe" };
+
+            var fornecedorExiste = _fornecedorRepositorio.ObterPorId(requisicao?.FornecedorId ?? 0) != null;
+
+            if (!fornecedorExiste)
+                return new AtualizaProdutoResposta { Sucesso = false, MensagemErro = "O fornecedor não existe" };
 
             produto.Descricao = requisicao.Descricao;
             produto.DataFabricacao = requisicao.DataFabricacao;

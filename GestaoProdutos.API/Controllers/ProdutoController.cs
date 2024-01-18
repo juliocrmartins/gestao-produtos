@@ -2,6 +2,7 @@
 using GestaoProdutos.Dominio.Modelos.DTO;
 using GestaoProdutos.Dominio.Modelos.Entidades;
 using GestaoProdutos.Dominio.Requisicoes;
+using GestaoProdutos.Dominio.Respostas;
 using GestaoProdutos.Dominio.Servicos;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -14,32 +15,18 @@ namespace GestaoProdutos.API.Controllers
     [Route("[controller]")]
     public class ProdutoController : ControllerBase
     {
-        private readonly IRepositorio<Produto> _produtoRepositorio;
         private readonly ProdutoServico _produtoServico;
 
-
-        private static readonly string[] Produtos = new[]
+        public ProdutoController(ProdutoServico produtoServico)
         {
-            "Lanterna C3", "Pastilha de freio Ford", "Calota Peugeot 206", "Protetor de Cárter Montana"
-        };
-
-        public ProdutoController(IRepositorio<Produto> produtoRepositorio, ProdutoServico produtoServico)
-        {
-            _produtoRepositorio = produtoRepositorio;
             _produtoServico = produtoServico;
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<Produto>> Get(FiltraProdutoRequisicao requisicao)
+        public ActionResult<ListaPaginadaResposta<ProdutoDto>> Get([FromQuery] FiltraProdutoRequisicao requisicao)
         {
-            var lista = _produtoRepositorio.ListarTodos();
-
-            var rng = new Random();
-            return Enumerable.Range(1, 3).Select(index => new Produto
-            {
-                Descricao = Produtos[rng.Next(Produtos.Length)]
-            })
-            .ToArray();
+            var resultado = _produtoServico.ListarPorFiltro(requisicao);
+            return resultado;
         }
 
         [HttpGet("{produtoId}")]

@@ -1,8 +1,8 @@
 ﻿using GestaoProdutos.Dominio.Modelos.Enums;
 
-namespace GestaoProdutos.Dominio.Requisicoes
+namespace GestaoProdutos.Dominio.Modelos
 {
-    public class FiltraProdutoRequisicao
+    public class ProdutoFiltro
     {
         public string TextoBusca { get; set; }
         public int? FornecedorId { get; set; }

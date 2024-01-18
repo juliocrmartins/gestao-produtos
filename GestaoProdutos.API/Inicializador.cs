@@ -14,8 +14,8 @@ namespace GestaoProdutos.API
         {
             services.AddDbContext<ContextoBD>(options => options.UseSqlServer(conection));
 
-            services.AddScoped(typeof(IRepositorio<Produto>), typeof(ProdutoRepositorio));
-            services.AddScoped(typeof(IRepositorio<>), typeof(Repositorio<>));
+            services.AddScoped(typeof(IProdutoRepositorio), typeof(ProdutoRepositorio));
+            services.AddScoped(typeof(IFornecedorRepositorio), typeof(FornecedorRepositorio));
             services.AddScoped(typeof(ProdutoServico));
             //services.AddScoped(typeof(ContatoService));
             //services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
