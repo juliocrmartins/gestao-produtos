@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestaoProdutos.Infra", "Ges
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestaoProdutos.Dominio", "GestaoProdutos.Dominio\GestaoProdutos.Dominio.csproj", "{D35D9F39-BF08-4B2B-9C64-49824BDD84B6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestaoProdutos.Tests", "GestaoProdutos.Tests\GestaoProdutos.Tests.csproj", "{B3AEB803-268B-4B18-8BD6-EE2027F39575}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestaoProdutos.Tests", "GestaoProdutos.Tests\GestaoProdutos.Tests.csproj", "{B3AEB803-268B-4B18-8BD6-EE2027F39575}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
