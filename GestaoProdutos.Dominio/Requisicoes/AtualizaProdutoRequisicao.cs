@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GestaoProdutos.Dominio.Requisicoes
+﻿namespace GestaoProdutos.Dominio.Requisicoes
 {
     public class AtualizaProdutoRequisicao : InsereProdutoRequisicao
     {

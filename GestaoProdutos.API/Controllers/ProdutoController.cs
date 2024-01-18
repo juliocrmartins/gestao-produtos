@@ -1,13 +1,8 @@
-﻿using GestaoProdutos.Dominio.Interfaces;
-using GestaoProdutos.Dominio.Modelos.DTO;
-using GestaoProdutos.Dominio.Modelos.Entidades;
+﻿using GestaoProdutos.Dominio.Modelos.DTO;
 using GestaoProdutos.Dominio.Requisicoes;
 using GestaoProdutos.Dominio.Respostas;
 using GestaoProdutos.Dominio.Servicos;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace GestaoProdutos.API.Controllers
 {

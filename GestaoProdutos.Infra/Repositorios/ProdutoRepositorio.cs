@@ -3,7 +3,6 @@ using GestaoProdutos.Dominio.Modelos;
 using GestaoProdutos.Dominio.Modelos.Entidades;
 using GestaoProdutos.Infra.Contexto;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace GestaoProdutos.Infra.Repositorios
