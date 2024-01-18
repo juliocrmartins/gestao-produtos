@@ -22,8 +22,8 @@ namespace GestaoProdutos.Infra.Repositorios
 
             if (!string.IsNullOrEmpty(filtro.TextoBusca))
                 query = query.Where(q => 
-                       q.Descricao.Contains(filtro.TextoBusca) ||
-                       q.Fornecedor.Descricao.Contains(filtro.TextoBusca))
+                       q.Descricao.ToLower().Contains(filtro.TextoBusca.ToLower()) ||
+                       q.Fornecedor.Descricao.ToLower().Contains(filtro.TextoBusca.ToLower()))
                     .AsEnumerable();
 
             if (filtro.Situacao != null)
